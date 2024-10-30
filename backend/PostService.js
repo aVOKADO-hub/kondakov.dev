@@ -113,7 +113,7 @@ class PostService {
 
         const workbook = xlsx.utils.book_new('test.xls');
         const worksheet = xlsx.utils.json_to_sheet(documents, {
-            header: ['responsible_person','rank', 'itemName', 'category', 'quantity', 'unit', 'serialNumber'],
+            header: ['responsible_person','rank', 'test_unit', 'type_of_test', 'who_cant_take_test', 'count_passed',],
             skipHeader: false
         });
         xlsx.utils.book_append_sheet(workbook, worksheet, 'Sheet1');

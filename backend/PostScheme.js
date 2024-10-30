@@ -4,11 +4,10 @@ import mongoose from 'mongoose'
 const postSchema = new mongoose.Schema({
     responsible_person: { type: String, required: true },
     rank: { type: String, required: true },
-    itemName: { type: String, required: true },
-    category: { type: Number, required: true },
-    quantity: { type: String, required: true },
-    unit: { type: String, required: true },
-    serialNumber: { type: Number, default: 0 }
+    test_unit: { type: String, required: true },
+    type_of_test: { type: String, required: true },
+    who_cant_take_test: { type: String, required: true },
+    count_passed: { type: Number, required: true }
 }, {
     versionKey: false
 });
