@@ -16,11 +16,11 @@ class AccountsController {
 
             if (user) {
                 // Store isAdmin status in session
-                req.session.isAdmin = user.isAdmin === 'true'; // Ensure boolean value
-                console.log('User isAdmin:', req.session.isAdmin);
+                req.session.userRole = user.userRole; // Ensure boolean value
+                console.log('User role:', req.session.isAdmin);
 
                 // Send success response to the client
-                res.status(200).json({ message: "Login successful", redirect: '/api/collections', isAdmin: req.session.isAdmin });
+                res.status(200).json({ message: "Login successful", redirect: '/api/collections', userRole: req.session.userRole });
             } else {
                 // Send error response to React frontend for incorrect login
                 res.status(400).json({ error: "Can't find account" });
@@ -43,7 +43,7 @@ class AccountsController {
     async createAccount(req, res) {
         try {
             // Create new account using service
-            await AccountsService.createAccount(req.body.login, req.body.password, req.body.isAdmin === 'true');
+            await AccountsService.createAccount(req.body.login, req.body.password, req.body.userRole);
 
             // Respond with JSON, or provide a redirect URL
             res.status(200).json({ message: "Account created", redirect: '/api/login' });
