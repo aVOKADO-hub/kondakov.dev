@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 import router from './Router.js'; 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import * as path from 'path';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import cors from 'cors'

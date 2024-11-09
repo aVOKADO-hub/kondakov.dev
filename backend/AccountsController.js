@@ -17,7 +17,7 @@ class AccountsController {
             if (user) {
                 // Store isAdmin status in session
                 req.session.userRole = user.userRole; // Ensure boolean value
-                console.log('User role:', req.session.isAdmin);
+                console.log('User role:', req.session.userRole);
 
                 // Send success response to the client
                 res.status(200).json({ message: "Login successful", redirect: '/api/collections', userRole: req.session.userRole });
@@ -43,7 +43,7 @@ class AccountsController {
     async createAccount(req, res) {
         try {
             // Create new account using service
-            await AccountsService.createAccount(req.body.login, req.body.password, req.body.userRole);
+            await AccountsService.createAccount(req.body.name,req.body.surname, req.body.lastname,req.body.password, req.body.userRole);
 
             // Respond with JSON, or provide a redirect URL
             res.status(200).json({ message: "Account created", redirect: '/api/login' });

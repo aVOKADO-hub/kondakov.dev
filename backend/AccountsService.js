@@ -1,8 +1,8 @@
 import Account from './AccountsScheme.js'
 
 class AccountsService{
-    async createAccount(login,password,userRole){
-        const newAccount = await Account.create({login,password,userRole})
+    async createAccount(name,surname,lastname,password,userRole){
+        const newAccount = await Account.create({name,surname,lastname,password,userRole})
         return newAccount
     }
     async validate(account){
