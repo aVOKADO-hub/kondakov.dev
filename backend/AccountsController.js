@@ -51,6 +51,26 @@ class AccountsController {
             res.status(500).json({ error: "Create account error: " + e.message });
         }
     }
+    async getUserRole(req, res) {
+    const { name, surname, lastname } = req.query;
+    console.log(`Received query: name=${name}, surname=${surname}, lastname=${lastname}`);
+
+    try {
+        const user = await AccountsService.getUserRole(name, surname, lastname);
+
+        if (!user) {
+            return res.status(404).send({ error: 'User not found' });
+        }
+
+        // Send the userRole field instead of role
+        res.send({ role: user.userRole });
+    } catch (error) {
+        console.error('Error fetching user role:', error);
+        res.status(500).send({ error: 'Server error' });
+    }
+}
+
+
 }
 
 export default new AccountsController();

@@ -13,6 +13,23 @@ class AccountsService{
         const post = await Account.findOne(account)
         return post
     }
+
+async getUserRole(name, surname, lastname) {
+    console.log(`Querying MongoDB with: name=${name}, surname=${surname}, lastname=${lastname}`);
+
+    try {
+        // Perform the query using Mongoose
+        return await Account.findOne({
+            name: name,
+            surname: surname,
+            lastname: lastname
+        });
+    } catch (error) {
+        console.error('Database query error:', error);
+        throw error;
+    }
+}
+
 }
 
 export default new AccountsService()

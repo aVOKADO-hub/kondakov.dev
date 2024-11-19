@@ -9,6 +9,8 @@ const router = new Router();
 // Existing routes...
 router.get('/login', AccountsController.login);
 router.post('/login', AccountsController.loginValidate);
+router.get('/usersRole', AccountsController.getUserRole);
+
 router.get('/register', AccountsController.register);
 router.post('/register', AccountsController.createAccount);
 router.get('/collections', PostController.getCollections);
